@@ -27,7 +27,8 @@ enum planck_layers {
   _LOWER, // Disabled
   _RAISE,
   _PLOVER, // Disabled
-  _ADJUST
+  _ADJUST,
+  _NUMPAD
 };
 
 enum planck_keycodes {
@@ -42,6 +43,7 @@ enum planck_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define ADJUST MO(_ADJUST)
+#define NUMPAD TG(_NUMPAD)
 #define M_SPC MT(MOD_HYPR, KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -170,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |MUSmod|Aud on|Audoff|      |      |Qwerty|Colemk|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
+ * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Numpad|      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -178,10 +180,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_planck_grid(
     XXXXXXX, QK_BOOT, DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL ,
     XXXXXXX, XXXXXXX, MU_NEXT, AU_ON,   AU_OFF,  XXXXXXX, AG_SWAP, QWERTY,  COLEMAK, XXXXXXX,  XXXXXXX, XXXXXXX,
-    XXXXXXX, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  NUMPAD , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-)
+),
 
+/* Numpad
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |             |  7   |  8   |  9   |      | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |NUMPAD|      |      |      |      |             |  4   |  5   |  6   |  -   |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |  1   |  2   |  3   |  +   |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |  0   |      |  .   |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+
+[_NUMPAD] = LAYOUT_planck_grid(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,    KC_BSPC,
+    NUMPAD , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_KP_MINUS,XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_KP_PLUS, KC_ENT ,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_0,    XXXXXXX, KC_DOT , XXXXXXX,    XXXXXXX
+)
 };
 
 #ifdef AUDIO_ENABLE
