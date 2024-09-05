@@ -1,3 +1,15 @@
+# Matt Yao's fork of QMK 
+
+The keymap to my main keyboard, a Planck v6,
+can be found [here](https://github.com/mattyaoo/qmk_firmware/blob/master/keyboars/planck/keymaps/mattyaoo/keymap.c).
+
+Some notable features:
+- LOWER is replaced by SHIFT
+- the bottom right key is the adjust layer
+- ADJUST + j is a numpad
+
+
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
